@@ -6,14 +6,14 @@ pygame.init()
 pygame.mixer.init()
 pygame.font.init()
 
-pantalla = pygame.display.set_mode((bm.ANCHO, bm.ALTO))
+pantalla = pygame.display.set_mode((o.ANCHO, o.ALTO))
 pygame.display.set_caption("AREA-Codycross-51 (Santiago Albertavicius, Matias Solorza)")
 
 # fuente
 fuente = pygame.font.SysFont("arial", 24)
 
 #boton volver
-boton_volver_rect = pygame.Rect(bm.ANCHO - 400, bm.ALTO - 50, 600, 40)
+boton_volver_rect = pygame.Rect(o.ANCHO - 400, o.ALTO - 50, 600, 40)
 
 
 # musica y sonido
@@ -53,20 +53,11 @@ def mostrar_pantalla_estadisticas(texto):
 
 
 # fondos
-fondo_credito = pygame.image.load("credit.png")
-fondo_credito = pygame.transform.scale(fondo_credito, (bm.ANCHO, bm.ALTO))
+#fondo_credito = pygame.image.load("credit.png")
+#fondo_credito = pygame.transform.scale(fondo_credito, (o.ANCHO, o.ALTO))
 
 #fondo animado menu
 
-CANT_FONDOS = 69  # <- cantidad fija de imágenes
-fondos = []
-for i in range(CANT_FONDOS):
-    imagen = pygame.image.load(f"lla {i}.jpg")
-    imagen = pygame.transform.scale(imagen, (bm.ANCHO, bm.ALTO))
-    fondos.append(imagen)
-
-fondo_index = 0
-contador = 0
 reloj = pygame.time.Clock()
 estado = "menu" 
 
@@ -105,13 +96,7 @@ while True:
 
     if estado == "menu": 
     # Mostrar fondo animado
-        pantalla.blit(fondos[fondo_index], (0, 0))
-        contador += 1
-        if contador >= 69:
-            contador = 0
-        fondo_index += 1
-        if fondo_index >= CANT_FONDOS:
-            fondo_index = 0
+        
 
         # play (funcion de rectangulo, y texto)
         pygame.draw.rect(pantalla, o.BLANCO,(bm.rec_play_x + 10, bm.rec_play_y + 50, bm.rec_play_ancho, bm.rec_play_alto))
@@ -142,7 +127,7 @@ while True:
         mostrar_pantalla_estadisticas ("nashe")
         
     pygame.display.update()
-    reloj.tick(30)
+    reloj.tick(60)
           
 
 
